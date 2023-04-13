@@ -5,7 +5,8 @@ from scipy.stats import ks_2samp
 chat_id = 975846018 # Ваш chat ID, не меняйте название переменной
 
 def solution(x: np.array, y: np.array) -> bool:
-    
-    alpha = 0.01  # уровень значимости
-    statistic, pvalue = ks_2samp(x, y)
-    return pvalue < alpha
+    # применяем тест Колмогорова-Смирнова к выборкам x и y
+    test_result = ks_2samp(x, y)
+
+    # сравниваем p-value с уровнем значимости
+    return test_result.pvalue < 0.04
